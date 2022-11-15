@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Map</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<h1>My First Google Map</h1>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:1,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var flightPlanCoordinates = [
+    { lat: 37.772, lng: -122.214 },
+    { lat: 21.291, lng: -157.821 },
+    { lat: -18.142, lng: 178.431 },
+    { lat: -27.467, lng: 153.027 },
+  ];
+var a={};
+a.lat=-127.467;
+a.lng=53.027;
+flightPlanCoordinates.push({ lat: -127.467, lng: 53.027 })
+  const flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: "#00FF00",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
+  });
+
+  flightPath.setMap(map);
+  alert(JSON.stringify(flightPlanCoordinates));
+}
+window.addEventListener('load',myMap);
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBumB-iWd2_IPyIcSlsmOSO6j0-O6wnHbQ&callback=myMap"></script>
+
+</body>
+</html>
